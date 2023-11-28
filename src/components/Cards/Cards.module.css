@@ -1,0 +1,10 @@
+.cardsContainer{
+  display: flex;
+  gap: 10px;
+}
+
+.card {
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
