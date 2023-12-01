@@ -1,27 +1,43 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { AddCardApiArg, AddCardApiResponse, DeleteCardApiArg, DeleteCardApiResponse, FindCardByIdApiArg, FindCardByIdApiResponse, FindCardsApiArg, FindCardsApiResponse } from './cards.types'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+  GetCardsApiResponse,
+  GetCardsApiArg,
+  AddCardApiResponse,
+  AddCardApiArg,
+  GetCardByIdApiResponse,
+  GetCardByIdApiArg,
+  DeleteCardApiResponse,
+  DeleteCardApiArg,
+} from "./cards.types";
+
+const baseUrl = "http://localhost:5000/api";
 
 export const cardsApi = createApi({
-  reducerPath: 'cardsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api' }),
+  reducerPath: "cardsApi",
+  baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (build) => ({
-    findCards: build.query<FindCardsApiResponse, FindCardsApiArg>({
+    getCards: build.query<GetCardsApiResponse, GetCardsApiArg>({
       query: () => ({ url: `/cards` }),
     }),
     addCard: build.mutation<AddCardApiResponse, AddCardApiArg>({
       query: (queryArg) => ({
         url: `/cards`,
         method: "POST",
-        body: queryArg.newCard,
+        body: queryArg.fullCard,
       }),
     }),
-    findCardById: build.query<FindCardByIdApiResponse, FindCardByIdApiArg>({
+    getCardById: build.query<GetCardByIdApiResponse, GetCardByIdApiArg>({
       query: (queryArg) => ({ url: `/cards/${queryArg.id}` }),
     }),
     deleteCard: build.mutation<DeleteCardApiResponse, DeleteCardApiArg>({
       query: (queryArg) => ({ url: `/cards/${queryArg.id}`, method: "DELETE" }),
     }),
   }),
-})
+});
 
-export const { useFindCardByIdQuery, useFindCardsQuery, useAddCardMutation, useDeleteCardMutation } = cardsApi
+export const {
+  useGetCardsQuery,
+  useAddCardMutation,
+  useGetCardByIdQuery,
+  useDeleteCardMutation,
+} = cardsApi;

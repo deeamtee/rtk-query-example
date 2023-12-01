@@ -1,12 +1,12 @@
-export type FindCardsApiResponse = /** status 200 card response */ Card[];
-export type FindCardsApiArg = void;
+export type GetCardsApiResponse = /** status 200 card response */ Cards;
+export type GetCardsApiArg = void;
 export type AddCardApiResponse = /** status 200 card response */ Card;
 export type AddCardApiArg = {
   /** Card to add to the store */
-  newCard: NewCard;
+  fullCard: FullCard;
 };
-export type FindCardByIdApiResponse = /** status 200 card response */ Card;
-export type FindCardByIdApiArg = {
+export type GetCardByIdApiResponse = /** status 200 card response */ FullCard;
+export type GetCardByIdApiArg = {
   /** ID of card to fetch */
   id: number;
 };
@@ -16,12 +16,19 @@ export type DeleteCardApiArg = {
   id: number;
 };
 export type NewCard = {
-  name: string;
-  tag?: string;
+  title: string;
+  description?: string;
+  img?: string;
 };
 export type Card = NewCard & {
   id: number;
 };
+export type Cards = {
+  data?: Card[];
+};
 export type Error = {
   message: string;
+};
+export type FullCard = NewCard & {
+  story?: string;
 };

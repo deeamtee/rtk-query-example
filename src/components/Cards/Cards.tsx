@@ -1,17 +1,14 @@
-import { useFindCardsQuery } from "@services/cards/cards";
+import { useGetCardsQuery } from "@services/cards/cards";
 import s from "./Cards.module.css";
+import { Card } from "@components/Card";
 
 export const Cards = () => {
-  const { data } = useFindCardsQuery(null);
+  const { data } = useGetCardsQuery(null);
   console.log(data);
 
   return (
-    <div className={s.cardsContainer}>
-      {data.map((card) => (
-        <div key={card.id} className={s.card}>
-          {card.name}
-        </div>
-      ))}
+    <div className={s.cards}>
+      {data?.data?.map((card) => (<Card key={card.id} {...card} />))}
     </div>
   );
 };

@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "Swagger Cardstore service",
+    "title": "Characters Cardstore service",
     "description": "A sample API that uses a cardstore as an example to demonstrate features in the OpenAPI 3.0 specification",
     "termsOfService": "http://swagger.io/terms/",
     "contact": {
@@ -29,19 +29,16 @@
         "tags": [
           "Cards"
         ],
-        "summary": "Returns all cards from the system that the user has access to",
-        "description": "Returns all cards from the system that the user has access to",
-        "operationId": "findCards",
+        "summary": "Returns all character cards",
+        "description": "Returns all character cards",
+        "operationId": "getCards",
         "responses": {
           "200": {
             "description": "card response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Card"
-                  }
+                  "$ref": "#/components/schemas/Cards"
                 }
               }
             }
@@ -62,8 +59,8 @@
         "tags": [
           "Cards"
         ],
-        "summary": "Creates a new card in the store.  Duplicates are not allowed",
-        "description": "Creates a new card in the store.  Duplicates are not allowed",
+        "summary": "Creates a new card in the store.",
+        "description": "Creates a new card in the store.",
         "operationId": "addCard",
         "requestBody": {
           "description": "Card to add to the store",
@@ -71,7 +68,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewCard"
+                "$ref": "#/components/schemas/FullCard"
               }
             }
           }
@@ -105,9 +102,9 @@
         "tags": [
           "Cards"
         ],
-        "summary": "Returns a user based on a single ID, if the user does not have access to the card",
+        "summary": "Returns a characters card based on the ID supplied",
         "description": "Returns a user based on a single ID, if the user does not have access to the card",
-        "operationId": "find card by id",
+        "operationId": "getCardById",
         "parameters": [
           {
             "name": "id",
@@ -126,7 +123,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Card"
+                  "$ref": "#/components/schemas/FullCard",
+                  "type": "object",
+                  "required": [
+                    "story"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -147,8 +153,8 @@
         "tags": [
           "Cards"
         ],
-        "summary": "deletes a single card based on the ID supplied",
-        "description": "deletes a single card based on the ID supplied",
+        "summary": "Deletes a single card based on the ID supplied",
+        "description": "Deletes a single card based on the ID supplied",
         "operationId": "deleteCard",
         "parameters": [
           {
@@ -182,6 +188,31 @@
   },
   "components": {
     "schemas": {
+      "Cards": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Card"
+            }
+          }
+        }
+      },
+      "Pagination": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "total": {
+            "type": "integer"
+          }
+        }
+      },
       "Card": {
         "allOf": [
           {
@@ -201,16 +232,34 @@
           }
         ]
       },
+      "FullCard": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/NewCard"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "story": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
       "NewCard": {
         "type": "object",
         "required": [
-          "name"
+          "title"
         ],
         "properties": {
-          "name": {
+          "title": {
             "type": "string"
           },
-          "tag": {
+          "description": {
+            "type": "string"
+          },
+          "img": {
             "type": "string"
           }
         }

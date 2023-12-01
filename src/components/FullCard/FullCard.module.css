@@ -1,0 +1,26 @@
+.card {
+  max-width: 860px;
+  margin: 30px auto;
+}
+
+.card__image {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.card__title {
+  font-weight: 700;
+  width: 70%;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.card__description {
+  width: 70%;
+  margin-top: 5px;
+}
+
+.card__stoey {
+  width: 70%;
+  margin-top: 20px;
+}
