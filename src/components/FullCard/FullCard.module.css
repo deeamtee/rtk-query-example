@@ -6,6 +6,8 @@
 .card__image {
   width: 100%;
   margin-top: 18px;
+  max-height: 1000px;
+  object-fit: cover;
 }
 
 .card__title {
