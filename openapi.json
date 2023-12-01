@@ -112,8 +112,7 @@
             "description": "ID of card to fetch",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
@@ -129,7 +128,7 @@
                     "story"
                   ],
                   "properties": {
-                    "id": {
+                    "_id": {
                       "type": "string"
                     }
                   }

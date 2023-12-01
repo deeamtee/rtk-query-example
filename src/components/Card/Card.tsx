@@ -6,12 +6,13 @@ interface Props {
   title: string;
   description?: string;
   img?: string;
-  id?: number;
+  _id?: number;
 }
 
-export const Card: FC<Props> = ({ title, description, img, id }) => {
+export const Card: FC<Props> = ({ title, description, img, _id }) => {
+  console.log({ title, description, img, _id });
   return (
-    <Link className={s.card} to={`/cards/${id}`}>
+    <Link className={s.card} to={`/cards/${_id}`}>
       <img className={s.card__img} src={img} alt={title} />
       <p className={s.card__title}>{title}</p>
       <p className={s.card__description}>{description}</p>

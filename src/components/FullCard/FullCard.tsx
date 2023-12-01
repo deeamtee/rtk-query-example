@@ -7,7 +7,7 @@ interface Props {}
 
 export const FullCard: FC<Props> = ({}) => {
   const { id } = useParams();
-  const { data: card } = useGetCardByIdQuery({ id: Number(id) });
+  const { data: card } = useGetCardByIdQuery({ id });
 
   return (
     <div className={s.card}>

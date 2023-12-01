@@ -31,7 +31,7 @@ export type AddCardApiArg = {
 export type GetCardByIdApiResponse = /** status 200 card response */ FullCard;
 export type GetCardByIdApiArg = {
   /** ID of card to fetch */
-  id: number;
+  id: string;
 };
 export type DeleteCardApiResponse = /** status 204 card deleted */ void;
 export type DeleteCardApiArg = {
