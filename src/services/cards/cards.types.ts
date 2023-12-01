@@ -21,7 +21,7 @@ export type NewCard = {
   img?: string;
 };
 export type Card = NewCard & {
-  id: number;
+  _id: string;
 };
 export type Cards = {
   data?: Card[];

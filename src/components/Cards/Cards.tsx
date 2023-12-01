@@ -8,7 +8,7 @@ export const Cards = () => {
 
   return (
     <div className={s.cards}>
-      {data?.data?.map((card) => (<Card key={card.id} {...card} />))}
+      {data?.data?.map((card) => (<Card key={card._id} {...card} />))}
     </div>
   );
 };
