@@ -20,7 +20,13 @@
   margin-top: 5px;
 }
 
-.card__stoey {
+.card__story {
   width: 70%;
-  margin-top: 20px;
+  margin-top: 10px 0;
+}
+
+.card__heading_story {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
 }

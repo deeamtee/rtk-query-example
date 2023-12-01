@@ -14,9 +14,9 @@ export const FullCard: FC<Props> = ({}) => {
       {card ? (
         <>
           <img className={s.card__image} src={card.img} alt={card.title} />
-          <p className={s.card__title}>{card.title}</p>
+          <h2 className={s.card__title}>{card.title}</h2>
           <p className={s.card__description}>{card.description}</p>
-          <h2>История</h2>
+          <h3 className={s.card__heading_story}>История</h3>
           <p className={s.card__story}>{card.story}</p>
         </>
       ) : (
