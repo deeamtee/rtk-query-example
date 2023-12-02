@@ -6,7 +6,7 @@ interface Props {
   title: string;
   description?: string;
   img?: string;
-  _id?: number;
+  _id?: string;
 }
 
 export const Card: FC<Props> = ({ title, description, img, _id }) => {

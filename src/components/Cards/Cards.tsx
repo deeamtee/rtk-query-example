@@ -3,8 +3,7 @@ import s from "./Cards.module.css";
 import { Card } from "@components/Card";
 
 export const Cards = () => {
-  const { data } = useGetCardsQuery(null, { refetchOnMountOrArgChange: 10 });
-  console.log(data);
+  const { data } = useGetCardsQuery(null);
 
   return (
     <div className={s.cards}>
