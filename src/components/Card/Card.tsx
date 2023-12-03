@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const Card: FC<Props> = ({ title, description, img, _id }) => {
-  console.log({ title, description, img, _id });
   return (
     <Link className={s.card} to={`/cards/${_id}`}>
       <img className={s.card__img} src={img} alt={title} />
