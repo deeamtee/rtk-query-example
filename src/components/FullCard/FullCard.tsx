@@ -3,9 +3,7 @@ import s from "./FullCard.module.css";
 import { useParams } from "react-router-dom";
 import { useGetCardByIdQuery } from "@services/cards";
 
-interface Props {}
-
-export const FullCard: FC<Props> = ({}) => {
+export const FullCard: FC = ({}) => {
   const { id } = useParams();
   const { data: card } = useGetCardByIdQuery({ id });
 
