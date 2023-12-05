@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import styles from './Form.module.css'; // Подключаем CSS-модули
 import { useAddCardMutation } from '@services/cards/cards';
 
-interface FormProps {
-  useAddCardMutation: (data: { fullCard: { title: string; description: string; img: string; story: string } }) => void;
-}
-
-export const Form: React.FC<FormProps> = () => {
+export const Form: React.FC = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -24,8 +20,6 @@ export const Form: React.FC<FormProps> = () => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(e);
-    
     e.preventDefault();
     // Отправка данных на сервер с помощью useAddCardMutation
     addCard({ fullCard: formData });
