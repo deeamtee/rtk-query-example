@@ -1,13 +1,15 @@
 import { FC } from "react";
 import s from "./FullCard.module.css";
 import { useParams } from "react-router-dom";
-import { useGetCardByIdQuery } from "@services/cards";
 
-interface Props {}
-
-export const FullCard: FC<Props> = ({}) => {
+export const FullCard: FC = ({}) => {
   const { id } = useParams();
-  const { data: card } = useGetCardByIdQuery({ id });
+  const card = {
+    title: "Заголовок карточки",
+    description: "Описание карточки",
+    img: "https://pm1.aminoapps.com/7070/89285468508878d4dd8885160feade0f0fb9337ar1-1200-1262v2_00.jpg",
+    story: "Это текст карточки"
+  }
 
   return (
     <div className={s.card}>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './Form.module.css'; // Подключаем CSS-модули
-import { useAddCardMutation } from '@services/cards/cards';
 
 export const Form: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +9,6 @@ export const Form: React.FC = () => {
     story: '',
   });
 
-  const [addCard] = useAddCardMutation();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -21,9 +19,8 @@ export const Form: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Отправка данных на сервер с помощью useAddCardMutation
-    addCard({ fullCard: formData });
-    // Очистка формы после отправки данных
+    // Отправка данных на сервер POST /cards
+
     setFormData({
       title: '',
       description: '',
