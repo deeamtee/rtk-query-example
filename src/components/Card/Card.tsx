@@ -10,7 +10,7 @@ interface Props {
 
 export const Card: FC<Props> = ({ title, description, img }) => {
   return (
-    <div>
+    <div className={s.card}>
       <img className={s.card__img} src={img} alt={title} />
       <p className={s.card__title}>{title}</p>
       <p className={s.card__description}>{description}</p>
